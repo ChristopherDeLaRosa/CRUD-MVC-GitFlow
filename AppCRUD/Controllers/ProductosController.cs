@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AppCRUD.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AppCRUD.Controllers
 {
     public class ProductosController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public ProductosController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        // GET: Productos
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Productos.ToListAsync());
         }
     }
 }
