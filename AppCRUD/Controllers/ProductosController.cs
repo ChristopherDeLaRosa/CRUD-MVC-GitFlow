@@ -18,5 +18,23 @@ namespace AppCRUD.Controllers
         {
             return View(await _context.Productos.ToListAsync());
         }
+
+        // GET: Productos/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var producto = await _context.Productos
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            return View(producto);
+        }
     }
 }
