@@ -1,4 +1,4 @@
-﻿@model CRUDApp.Models.Entities.Producto
+﻿@model AppCRUD.Models.Entities.Producto
 
 @{
     ViewData["Title"] = "Detalles del Producto";
@@ -7,7 +7,6 @@
 <h1>Detalles del Producto</h1>
 
 <div>
-    <h4>Producto</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -41,8 +40,9 @@
             @Html.DisplayFor(model => model.FechaCreacion)
         </dd>
     </dl>
+    <div class="d-flex gap-2 mt-3">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar</a>
-    <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
-</div>
+
